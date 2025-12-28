@@ -1,10 +1,5 @@
 # JSON5 – JSON for Humans
 
-[![Build Status](https://app.travis-ci.com/json5/json5.svg?branch=main)][Build
-Status] [![Coverage
-Status](https://coveralls.io/repos/github/json5/json5/badge.svg)][Coverage
-Status]
-
 JSON5 is an extension to the popular [JSON] file format that aims to be
 easier to **write and maintain _by hand_ (e.g. for config files)**.
 It is _not intended_ to be used for machine-to-machine communication.
@@ -32,10 +27,6 @@ and is directly used in many of the popular projects mentioned above
 (where e.g. extreme performance isn't necessary),
 but others have created [many other libraries](https://github.com/json5/json5/wiki/In-the-Wild)
 across many other platforms.
-
-[Build Status]: https://app.travis-ci.com/json5/json5
-
-[Coverage Status]: https://coveralls.io/github/json5/json5
 
 [JSON]: https://tools.ietf.org/html/rfc7159
 
@@ -98,34 +89,20 @@ from the Chromium/Blink project.
 For a detailed explanation of the JSON5 format, please read the [official
 specification](https://json5.github.io/json5-spec/).
 
-## Installation and Usage
-### Node.js
-```sh
-npm install json5
-```
+## Usage
 
-#### CommonJS
 ```js
-const JSON5 = require('json5')
-```
+import { JSON5 } from "https://code4fukui.github.io/JSON5/JSON5.js";
 
-#### Modules
-```js
-import JSON5 from 'json5'
-```
+const s = `{
+  a: "abc", // comment
+  b: 123, /* comment */
+}`;
 
-### Browsers
-#### UMD
-```html
-<!-- This will create a global `JSON5` variable. -->
-<script src="https://unpkg.com/json5@2/dist/index.min.js"></script>
-```
-
-#### Modules
-```html
-<script type="module">
-  import JSON5 from 'https://unpkg.com/json5@2/dist/index.min.mjs'
-</script>
+const obj = JSON5.parse(s);
+console.log(obj);
+const s2 = JSON5.stringify(obj);
+console.log(s2);
 ```
 
 ## API
@@ -183,33 +160,13 @@ properties if a replacer array is specified.
 #### Return value
 A JSON5 string representing the value.
 
-### Node.js `require()` JSON5 files
-When using Node.js, you can `require()` JSON5 files by adding the following
-statement.
-
-```js
-require('json5/lib/register')
-```
-
-Then you can load a JSON5 file with a Node.js `require()` statement. For
-example:
-
-```js
-const config = require('./config.json5')
-```
-
 ## CLI
 Since JSON is more widely used than JSON5, this package includes a CLI for
 converting JSON5 to JSON and for validating the syntax of JSON5 documents.
 
-### Installation
-```sh
-npm install --global json5
-```
-
 ### Usage
 ```sh
-json5 [options] <file>
+deno run -A https://code4fukui.github.io/JSON5/lib/cli.js [options] <file>
 ```
 
 If `<file>` is not provided, then STDIN is used.
