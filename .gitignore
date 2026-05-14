@@ -41,3 +41,8 @@ dist/
 
 test/output.json
 test/test.json
+
+# meta-ops cleanup
+.DS_Store
+Thumbs.db
+node_modules/
